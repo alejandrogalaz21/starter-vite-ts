@@ -14,7 +14,7 @@ type Props = {
 
 export function BlankView({ title = 'Blank' }: Props) {
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.app);
+  const { data } = useSelector((state: { app: { data: any } }) => state.app);
 
   useEffect(() => {
     dispatch(start());
