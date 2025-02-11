@@ -22,7 +22,6 @@ export function GuestGuard({ children }: Props) {
   const [isChecking, setIsChecking] = useState<boolean>(true);
 
   const returnTo = searchParams.get('returnTo') || CONFIG.auth.redirectPath;
-  console.log({ returnTo });
 
   const checkPermissions = async (): Promise<void> => {
     if (loading) {
@@ -30,7 +29,6 @@ export function GuestGuard({ children }: Props) {
     }
 
     if (authenticated) {
-      debugger;
       router.replace(returnTo);
       return;
     }
