@@ -29,6 +29,7 @@ export function GuestGuard({ children }: Props) {
     }
 
     if (authenticated) {
+      console.log({ returnTo });
       router.replace(returnTo);
       return;
     }

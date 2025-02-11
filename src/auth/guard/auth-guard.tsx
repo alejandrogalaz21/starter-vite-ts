@@ -51,7 +51,7 @@ export function AuthGuard({ children }: Props) {
       }[method];
 
       const href = `${signInPath}?${createQueryString('returnTo', pathname)}`;
-
+      console.log({ href });
       router.replace(href);
       return;
     }
