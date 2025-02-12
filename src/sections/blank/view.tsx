@@ -19,7 +19,7 @@ export function BlankView({ title = 'Blank' }: Props) {
   const { data, loading } = useSelector((state: state) => state.app);
 
   useEffect(() => {
-    if (!loading && data.length === 0) {
+    if (!loading && data.results.length === 0) {
       dispatch(requestStart());
     }
   }, [dispatch, data, loading]);

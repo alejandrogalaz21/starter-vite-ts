@@ -90,4 +90,10 @@ export const removeSurveyEpic = (action$: Observable<Action>): Observable<Action
     })
   );
 
-export const appEpics = [fetchAllEpic];
+export const appEpics = [
+  fetchEpic,
+  fetchItemEpic,
+  createSurveyEpic,
+  updateSurveyEpic,
+  removeSurveyEpic,
+];
