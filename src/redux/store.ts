@@ -35,6 +35,6 @@ export type AppDispatch = typeof store.dispatch;
  *
  * @typedef {ReturnType<typeof store.getState>} RootState
  */
-export type RootState = ReturnType<typeof store.getState>;
+export type state = ReturnType<typeof store.getState>;
 
 export default store;

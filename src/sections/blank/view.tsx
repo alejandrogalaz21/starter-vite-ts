@@ -1,3 +1,5 @@
+import type { state } from 'src/redux/store';
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -14,11 +16,13 @@ type Props = {
 
 export function BlankView({ title = 'Blank' }: Props) {
   const dispatch = useDispatch();
-  const { data } = useSelector((state: { app: { data: any } }) => state.app);
+  const { data, loading } = useSelector((state: state) => state.app);
 
   useEffect(() => {
-    dispatch(start());
-  });
+    if (!loading && data.length === 0) {
+      dispatch(start());
+    }
+  }, [dispatch, data, loading]);
 
   return (
     <DashboardContent maxWidth="xl">
@@ -34,7 +38,11 @@ export function BlankView({ title = 'Blank' }: Props) {
           border: (theme) => `dashed 1px ${theme.vars.palette.divider}`,
         }}
       >
-        <pre>{JSON.stringify(data, null, 2)}</pre>
+        {loading ? (
+          <Typography variant="h6">Loading...</Typography>
+        ) : (
+          <pre>{JSON.stringify(data, null, 2)}</pre>
+        )}
       </Box>
     </DashboardContent>
   );
