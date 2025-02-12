@@ -1,28 +1,19 @@
 import type { state } from 'src/redux/store';
 
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 import { varAlpha } from 'src/theme/styles';
-import { requestStart } from 'src/redux/app/app-slice';
 import { DashboardContent } from 'src/layouts/dashboard';
 
 type Props = {
   title?: string;
 };
 
-export function BlankView({ title = 'Blank' }: Props) {
-  const dispatch = useDispatch();
+export function SurveysView({ title = 'Blank' }: Props) {
   const { data, loading } = useSelector((state: state) => state.app);
-
-  useEffect(() => {
-    if (!loading && data.length === 0) {
-      dispatch(requestStart());
-    }
-  }, [dispatch, data, loading]);
 
   return (
     <DashboardContent maxWidth="xl">
