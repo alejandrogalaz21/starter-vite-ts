@@ -48,7 +48,7 @@ const initialState: AppState = {
   },
 };
 
-const appSlice = createSlice({
+const app = createSlice({
   name: 'survey',
   initialState,
   reducers: {
@@ -103,12 +103,22 @@ const appSlice = createSlice({
 });
 
 export const { requestFailure, fetchSuccess, createSuccess, updateSuccess, removeSuccess } =
-  appSlice.actions;
+  app.actions;
 
-export const requestStart = createAction<{
-  type: RequestTypes;
-  id: string | number | null;
+export type QueryPayload = {
+  type?: RequestTypes;
+  id?: string | number;
   [key: string]: any;
-}>(appSlice.actions.requestStart.type);
+};
 
-export const surveysReducer = appSlice.reducer;
+export const requestStart = createAction(
+  app.actions.requestStart.type,
+  (payload?: QueryPayload) => ({
+    payload: {
+      ...payload,
+      type: payload?.type || RequestTypes.FETCH_ALL,
+    },
+  })
+);
+
+export const surveysReducer = app.reducer;
