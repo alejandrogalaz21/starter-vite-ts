@@ -9,7 +9,7 @@ const PORT = 8081;
 const env = loadEnv('all', process.cwd());
 
 export default defineConfig({
-  base: env.VITE_BASE_PATH ?? '/',
+  //base: env.VITE_BASE_PATH ?? '/',
   plugins: [
     react(),
     checker({
