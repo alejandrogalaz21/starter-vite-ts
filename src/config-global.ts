@@ -91,3 +91,5 @@ export const CONFIG: ConfigValue = {
     key: import.meta.env.VITE_SUPABASE_ANON_KEY ?? '',
   },
 };
+
+console.log({ CONFIG });
