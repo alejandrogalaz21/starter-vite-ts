@@ -1,3 +1,4 @@
+// vite.config.ts
 import path from 'path';
 import checker from 'vite-plugin-checker';
 import { loadEnv, defineConfig } from 'vite';
