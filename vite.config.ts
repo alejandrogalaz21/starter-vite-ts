@@ -13,9 +13,12 @@ export default defineConfig({
     react(),
     checker({
       typescript: true,
-      eslint: {
-        lintCommand: 'eslint "./src/**/*.{js,jsx,ts,tsx}"',
-      },
+      eslint:
+        process.env.NODE_ENV !== 'production'
+          ? {
+              lintCommand: 'eslint "./src/**/*.{js,jsx,ts,tsx}"',
+            }
+          : false,
       overlay: {
         position: 'tl',
         initialIsOpen: false,
