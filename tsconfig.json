@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "noFallthroughCasesInSwitch": true,
     "useUnknownInCatchVariables": false,
     "allowSyntheticDefaultImports": true,
@@ -23,23 +23,6 @@
   },
   "include": ["**/*.ts", "**/*.tsx", "src/**/*"],
   "exclude": ["node_modules"],
-  "paths": {
-    "@*": ["./src/*", "./dist/*", ""],
-    "@assets/*": ["src/assets/*"],
-    "@auth/*": ["src/auth/*"],
-    "@components/*": ["src/components/*"],
-    "@hooks/*": ["src/hooks/*"],
-    "@layouts/*": ["src/layouts/*"],
-    "@locales/*": ["src/locales/*"],
-    "@pages/*": ["src/pages/*"],
-    "@redux/*": ["src/redux/*"],
-    "@routes/*": ["src/routes/*"],
-    "@sections/*": ["src/sections/*"],
-    "@services/*": ["src/services/*"],
-    "@theme/*": ["src/theme/*"],
-    "@types/*": ["src/types/*"],
-    "@utils/*": ["src/utils/*"]
-  },
   "references": [
     {
       "path": "./tsconfig.node.json"

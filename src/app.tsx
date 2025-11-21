@@ -1,6 +1,8 @@
 import 'src/global.css';
 
 import { Provider } from 'react-redux';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { Router } from 'src/routes/sections';
 
@@ -15,7 +17,17 @@ import { SettingsDrawer, defaultSettings, SettingsProvider } from 'src/component
 
 import { AuthProvider } from 'src/auth/context/jwt';
 
-export default function App() {
+/**
+ * Create a React Query client instance
+ * @type {QueryClient}
+ */
+const queryClient = new QueryClient();
+
+/**
+ * Main App component
+ * @returns {JSX.Element}
+ */
+export default function App(): JSX.Element {
   useScrollToTop();
 
   return (
@@ -23,11 +35,14 @@ export default function App() {
       <AuthProvider>
         <SettingsProvider settings={defaultSettings}>
           <ThemeProvider>
-            <MotionLazy>
-              <ProgressBar />
-              <SettingsDrawer />
-              <Router />
-            </MotionLazy>
+            <QueryClientProvider client={queryClient}>
+              <MotionLazy>
+                <ProgressBar />
+                <SettingsDrawer />
+                <Router />
+              </MotionLazy>
+              {import.meta.env.DEV && <ReactQueryDevtools initialIsOpen={false} />}
+            </QueryClientProvider>
           </ThemeProvider>
         </SettingsProvider>
       </AuthProvider>

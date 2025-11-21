@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import { varAlpha } from 'src/theme/styles';
 import { requestStart } from 'src/redux/app/app-slice';
 import { DashboardContent } from 'src/layouts/dashboard';
+import { TodosList } from 'src/features/todos/TodosList';
 
 type Props = {
   title?: string;
@@ -27,6 +28,8 @@ export function BlankView({ title = 'Blank' }: Props) {
   return (
     <DashboardContent maxWidth="xl">
       <Typography variant="h4"> {title} </Typography>
+
+      <TodosList />
 
       <Box
         sx={{

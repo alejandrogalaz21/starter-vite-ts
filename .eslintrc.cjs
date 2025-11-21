@@ -5,7 +5,13 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true },
   plugins: ['perfectionist', 'unused-imports', '@typescript-eslint', 'prettier'],
-  extends: ['airbnb', 'airbnb-typescript', 'airbnb/hooks', 'prettier'],
+  extends: [
+    'airbnb',
+    'airbnb-typescript',
+    'airbnb/hooks',
+    'prettier',
+    'plugin:storybook/recommended',
+  ],
   parserOptions: {
     sourceType: 'module',
     ecmaVersion: 'latest',
@@ -38,6 +44,19 @@ module.exports = {
     'import/prefer-default-export': 0,
     'prefer-destructuring': [1, { object: true, array: false }],
     'no-debugger': 0, // Add this line to allow debugger
+    // import
+    'import/no-extraneous-dependencies': [
+      2,
+      {
+        devDependencies: [
+          '**/*.test.{ts,tsx}',
+          '**/*.spec.{ts,tsx}',
+          '**/vite.config.ts',
+          '**/*.stories.{ts,tsx}',
+          '**/.storybook/**',
+        ],
+      },
+    ],
     // typescript
     '@typescript-eslint/naming-convention': 0,
     '@typescript-eslint/no-use-before-define': 0,
