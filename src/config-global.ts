@@ -37,7 +37,7 @@ export const CONFIG: ConfigValue = {
     name: 'Minimals',
     serverUrl: import.meta.env.VITE_SERVER_URL ?? 'https://api-dev-minimal-v6.vercel.app',
     assetURL: import.meta.env.VITE_ASSET_URL ?? 'https://api-dev-minimal-v6.vercel.app',
-    basePath: import.meta.env.VITE_BASE_PATH ?? '/',
+    basePath: (import.meta.env.VITE_BASE_PATH ?? '/').replace(/\/$/, ''),
     version: packageJson.version,
   },
   /**
